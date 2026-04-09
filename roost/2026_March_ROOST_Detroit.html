@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROOST Detroit — March 2026 Monthly Performance Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --ink-2: #2c2c3e;
+    --ink-light: #3d3d4f;
+    --muted: #7a7a8c;
+    --body: #f5f0e6;
+    --body-2: #ede8dc;
+    --surface: #faf7f0;
+    --border: #ddd8cc;
+    --border-light: #eae5d8;
+    --gold: #b8902a;
+    --gold-light: #f0e4c0;
+    --gold-pale: #faf5e8;
+    --green: #2d6a4f;
+    --green-light: #d8ede3;
+    --red: #b83232;
+    --red-light: #f5dada;
+    --orange: #c05a14;
+    --orange-light: #fce8d4;
+    --blue: #1a3a5c;
+    --blue-light: #d4e4f0;
+    --header-bg: #1e2535;
+    --header-bg-2: #2a3347;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--body);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: linear-gradient(160deg, var(--header-bg) 0%, var(--header-bg-2) 100%);
+    color: #fff;
+    padding: 64px 72px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .cover-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .cover-eyebrow span { color: rgba(255,255,255,0.35); margin: 0 8px; }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1.0;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .cover-title em { color: var(--gold); font-style: italic; font-weight: 400; }
+  .cover-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 40px;
+  }
+  .cover-summary {
+    max-width: 760px;
+    font-size: 17px;
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
+    border-left: 3px solid var(--gold);
+    padding-left: 24px;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrap { max-width: 1060px; margin: 0 auto; padding: 0 48px; }
+  .section { padding: 56px 0; }
+  .section + .section { border-top: 1px solid var(--border); }
+
+  /* ── SECTION HEADERS ── */
+  .section-eyebrow {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .section-eyebrow::after { content: ''; flex: 0 0 48px; height: 1px; background: var(--gold); }
+  .section-h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .section-intro {
+    font-size: 15.5px;
+    color: var(--ink-light);
+    line-height: 1.8;
+    max-width: 820px;
+    margin-bottom: 36px;
+  }
+  .section-intro strong { color: var(--ink); }
+
+  /* ── EXECUTIVE SUMMARY DARK BLOCK ── */
+  .exec-block {
+    background: var(--header-bg);
+    border-radius: 4px;
+    padding: 36px 42px;
+    color: rgba(255,255,255,0.82);
+    font-size: 15.5px;
+    line-height: 1.85;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .exec-block::before {
+    content: '—';
+    position: absolute;
+    top: 24px; right: 36px;
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+  }
+  .exec-block p { margin-bottom: 16px; }
+  .exec-block p:last-child { margin-bottom: 0; }
+  .exec-block .hl-gold { color: var(--gold); font-weight: 600; }
+  .exec-block .hl-green { color: #6fcf97; font-weight: 600; }
+  .exec-block .hl-red { color: #f28b82; font-weight: 600; }
+
+  /* ── KPI TILES ── */
+  .kpi-row { display: grid; gap: 16px; margin-bottom: 16px; }
+  .kpi-row-4 { grid-template-columns: repeat(4, 1fr); }
+  .kpi-row-3 { grid-template-columns: repeat(3, 1fr); }
+  .kpi-row-5 { grid-template-columns: repeat(5, 1fr); }
+
+  .kpi-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 22px 24px;
+  }
+  .kpi-tile.dark {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .kpi-tile.gold-border { border-top: 3px solid var(--gold); }
+  .kpi-tile-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .kpi-tile.dark .kpi-tile-label { color: rgba(255,255,255,0.45); }
+  .kpi-tile-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .kpi-tile.dark .kpi-tile-value { color: #fff; font-size: 44px; }
+  .kpi-tile-comp { font-size: 13px; color: var(--muted); }
+  .kpi-tile.dark .kpi-tile-comp { color: rgba(255,255,255,0.4); }
+  .kpi-change { font-size: 13px; font-weight: 600; }
+  .kpi-change.up { color: var(--green); }
+  .kpi-change.down { color: var(--red); }
+  .kpi-change.warn { color: var(--orange); }
+
+  /* ── TABLES ── */
+  .tbl-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead th {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 13px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    background: var(--body-2);
+    white-space: nowrap;
+  }
+  thead th.r { text-align: right; }
+  tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
+  tbody td.r { text-align: right; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--gold-pale); }
+  .tbl-total td { font-weight: 700; background: var(--body-2); }
+  .tbl-section td { background: var(--border-light); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+  .tbl-highlight td { background: #f5f0e0; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .badge.up { background: var(--green-light); color: var(--green); }
+  .badge.down { background: var(--red-light); color: var(--red); }
+  .badge.warn { background: var(--orange-light); color: var(--orange); }
+  .badge.info { background: var(--blue-light); color: var(--blue); }
+  .badge.gold { background: var(--gold-light); color: var(--gold); }
+  .badge.neutral { background: var(--border-light); color: var(--muted); }
+  .badge.winner { background: var(--green-light); color: var(--green); border: 1px solid var(--green); }
+
+  /* ── CALLOUT CARDS ── */
+  .card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+  .card-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 24px 0; }
+
+  .insight-card {
+    background: var(--surface);
+    border-radius: 3px;
+    padding: 24px 28px;
+    border: 1px solid var(--border);
+  }
+  .insight-card.red-border { border-left: 4px solid var(--red); }
+  .insight-card.gold-border { border-left: 4px solid var(--gold); }
+  .insight-card.green-border { border-left: 4px solid var(--green); }
+  .insight-card.orange-border { border-left: 4px solid var(--orange); }
+  .insight-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .insight-card p { font-size: 13.5px; color: var(--ink-light); line-height: 1.75; }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    border-radius: 3px;
+    padding: 20px 24px;
+    font-size: 14px;
+    line-height: 1.75;
+    margin: 20px 0;
+  }
+  .callout.gold { background: #fdf6e3; border: 1px solid #e8d08a; }
+  .callout.red { background: #fdf0f0; border: 1px solid #e8b0b0; }
+  .callout.green { background: #f0f8f4; border: 1px solid #a8d8bc; }
+  .callout-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .callout.gold .callout-label { color: var(--gold); }
+  .callout.red .callout-label { color: var(--red); }
+  .callout.green .callout-label { color: var(--green); }
+  .callout p { color: var(--ink-light); }
+  .callout strong { color: var(--ink); }
+
+  /* ── BUDGET REALLOCATION TABLE ── */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+  .budget-side { background: var(--header-bg); padding: 28px 32px; }
+  .budget-side.light { background: var(--body-2); }
+  .budget-side-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .budget-side.light .budget-side-label { color: var(--muted); }
+  .budget-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 13.5px; }
+  .budget-side.light .budget-row { border-bottom-color: var(--border-light); color: var(--ink-light); }
+  .budget-row:last-of-type { border-bottom: none; }
+  .budget-row .name { color: rgba(255,255,255,0.75); }
+  .budget-row .amt { font-weight: 700; color: #f28b82; }
+  .budget-row .amt.ok { color: rgba(255,255,255,0.9); }
+  .budget-side.light .budget-row .name { color: var(--ink-light); }
+  .budget-row .amt.green { color: #6fcf97; }
+  .budget-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; padding-top: 12px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
+  .budget-side.light .budget-total { border-top-color: var(--border); color: var(--ink); }
+  .budget-note { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; line-height: 1.6; font-style: italic; }
+  .budget-side.light .budget-note { color: var(--muted); }
+
+  /* ── PRIORITIES ── */
+  .priority-item {
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: flex-start;
+  }
+  .priority-item:last-child { border-bottom: none; }
+  .priority-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.5;
+    flex-shrink: 0;
+    line-height: 1;
+    width: 32px;
+  }
+  .priority-body { flex: 1; }
+  .priority-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .priority-text { font-size: 14px; color: var(--ink-light); line-height: 1.8; }
+
+  /* ── BENCHMARK CARDS ── */
+  .benchmark-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+  .benchmark-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 20px;
+  }
+  .benchmark-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .benchmark-card-value { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .benchmark-card-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* ── CAMPAIGN TABLE VERDICTS ── */
+  .verdict { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; white-space: nowrap; }
+  .verdict.over { background: #fde8e8; color: var(--red); border: 1px solid #f5b8b8; }
+  .verdict.under { background: var(--orange-light); color: var(--orange); border: 1px solid #f5c898; }
+  .verdict.scale { background: var(--green-light); color: var(--green); border: 1px solid #a8d8bc; }
+  .verdict.pause { background: var(--red-light); color: var(--red); border: 1px solid #f5b8b8; }
+  .verdict.watch { background: var(--gold-light); color: var(--gold); border: 1px solid #e8d08a; }
+  .verdict.fix { background: var(--orange-light); color: var(--orange); }
+
+  /* ── SCORECARD ── */
+  .scorecard-row { display: flex; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border-light); gap: 16px; font-size: 14px; }
+  .scorecard-row:last-child { border-bottom: none; }
+  .scorecard-metric { flex: 1; color: var(--ink); }
+  .scorecard-sub { font-size: 12px; color: var(--muted); }
+  .scorecard-val { width: 100px; text-align: right; font-weight: 700; color: var(--ink); }
+  .scorecard-target { width: 110px; text-align: right; font-size: 12px; color: var(--muted); }
+  .scorecard-status { width: 100px; text-align: right; }
+  .pill { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; }
+  .pill.above { background: var(--green-light); color: var(--green); }
+  .pill.below { background: var(--red-light); color: var(--red); }
+  .pill.watch { background: var(--gold-light); color: var(--gold); }
+  .pill.ok { background: var(--blue-light); color: var(--blue); }
+
+  /* ── SEGMENT MIX BAR ── */
+  .mix-bar { height: 32px; display: flex; border-radius: 3px; overflow: hidden; margin: 12px 0 8px; }
+  .mix-seg { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+  .mix-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
+  .mix-legend-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--ink-light); }
+  .mix-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── CHANNEL TILES ── */
+  .channel-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 20px 0; }
+  .channel-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 18px 20px;
+  }
+  .channel-tile.star { border-top: 3px solid var(--green); }
+  .channel-tile-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .channel-tile-val { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .channel-tile-sub { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  .report-footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.35);
+    padding: 28px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11.5px;
+    margin-top: 56px;
+  }
+  .report-footer strong { color: rgba(255,255,255,0.65); }
+
+  /* utilities */
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .mb-8 { margin-bottom: 8px; }
+  .mb-16 { margin-bottom: 16px; }
+  .mb-24 { margin-bottom: 24px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .text-muted { color: var(--muted); font-size: 12.5px; }
+  em.bold { font-style: normal; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     COVER
+══════════════════════════════════════ -->
+<header class="cover">
+  <div class="cover-eyebrow">Confidential <span>·</span> Monthly Performance Report</div>
+  <div class="cover-title">ROOST <em>Detroit</em></div>
+  <div class="cover-sub">March 2026 &nbsp;·&nbsp; Detroit, Michigan</div>
+  <p class="cover-summary">A month of genuine occupancy strength and market leadership — defined by a structural booking mix transformation that is compressing ADR, a digital program that needs realignment, and a dominant new group segment that tells a story worth understanding before entering the spring corporate season.</p>
+</header>
+
+<div class="page-wrap">
+
+<!-- ══════════════════════════════════════
+     SECTION 0 — EXECUTIVE SUMMARY
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-eyebrow">Executive Summary</div>
+  <h2 class="section-h2">The View from 30,000 Feet</h2>
+
+  <div class="exec-block">
+    <p>March 2026 delivered <span class="hl-gold">$629,144 in room revenue</span> — up <span class="hl-green">+$113,275 (+22%) year-over-year</span> — driven by an extraordinary 567 incremental room nights and the emergence of a dominant new group segment. ROOST Detroit claimed the <span class="hl-gold">#1 RevPAR rank</span> in its competitive set of 7 properties, with occupancy surging to 71.4% from 56.5% a year ago and RevPAR growing 20.9% to $170.</p>
+    <p>The headline numbers, however, carry an important structural caveat. The GR SMRF segment — essentially non-existent in March 2025 at just 5 room nights — exploded to <span class="hl-red">511 room nights in March 2026</span>, becoming the second-largest volume segment overnight. At $159 ADR, this segment is pricing 33% below portfolio average and is the single largest driver of the $11 ADR compression. Understanding who this segment is and whether the pricing is appropriate is the most important revenue management question of the quarter.</p>
+    <p>On the digital side, the paid search program faces structural challenges parallel to those in the revenue mix. <span class="hl-red">Brand spend consumes an estimated 65% of PPC budget</span> while non-brand campaigns — the property's primary tool for new-guest acquisition — are underfunded and underperforming. Website revenue fell 14.7% despite adequate traffic, pointing to a conversion funnel that needs attention entering the high-demand spring corporate season.</p>
+  </div>
+
+  <div class="kpi-row kpi-row-4">
+    <div class="kpi-tile dark">
+      <div class="kpi-tile-label">Total Room Revenue</div>
+      <div class="kpi-tile-value">$629K</div>
+      <div class="kpi-tile-comp">vs $516K · Mar 2025</div>
+      <div class="kpi-change up mt-8">↑ +$113,275 (+22.0%)</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">ADR</div>
+      <div class="kpi-tile-value">$239</div>
+      <div class="kpi-tile-comp">vs $250 · Mar 2025 · Comp Set: $262</div>
+      <div class="kpi-change down mt-8">↓ −$11 (−4.3%)</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Room Nights Sold</div>
+      <div class="kpi-tile-value">2,632</div>
+      <div class="kpi-tile-comp">vs 2,065 · Mar 2025</div>
+      <div class="kpi-change up mt-8">↑ +567 nights (+27.5%)</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">RevPAR Index (RGI)</div>
+      <div class="kpi-tile-value">100.1</div>
+      <div class="kpi-tile-comp">vs 98.4 · Mar 2025 · Target ≥ 115.0</div>
+      <div class="kpi-change up mt-8">↑ +1.7 pts · #1 of 7 in comp set</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 1 — STR & COMPETITIVE POSITION
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-eyebrow">Revenue Management</div>
+  <h2 class="section-h2">Competitive Position & Market Standing</h2>
+
+  <p class="section-intro">
+    ROOST Detroit occupies the #1 RevPAR position in its competitive set — a significant achievement — but the index targets reveal a split performance story. The property is winning on occupancy and volume while the competitive set is winning on rate. The $23 ADR gap vs. the comp set ($239 vs $262) is the defining revenue management challenge of 2026.
+  </p>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;color:var(--ink);margin-bottom:16px;">STR Performance vs. Competitive Set</h3>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th class="r">ROOST Detroit — Mar 2026</th>
+          <th class="r">ROOST Detroit — Mar 2025</th>
+          <th class="r">Change</th>
+          <th class="r">Comp Set — Mar 2026</th>
+          <th class="r">Comp Set Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Occupancy</strong></td>
+          <td class="r">71.4%</td>
+          <td class="r">56.5%</td>
+          <td class="r"><span class="badge up">↑ +26.4%</span></td>
+          <td class="r">65.0%</td>
+          <td class="r"><span class="badge up">+14.9%</span></td>
+        </tr>
+        <tr>
+          <td><strong>ADR</strong></td>
+          <td class="r">$239</td>
+          <td class="r">$250</td>
+          <td class="r"><span class="badge down">↓ −4.3%</span></td>
+          <td class="r">$262</td>
+          <td class="r"><span class="badge up">+3.4%</span></td>
+        </tr>
+        <tr>
+          <td><strong>RevPAR</strong></td>
+          <td class="r">$170</td>
+          <td class="r">$141</td>
+          <td class="r"><span class="badge up">↑ +20.9%</span></td>
+          <td class="r">$170</td>
+          <td class="r"><span class="badge up">+18.8%</span></td>
+        </tr>
+        <tr>
+          <td><strong>RevPAR Index (RGI)</strong></td>
+          <td class="r">100.1</td>
+          <td class="r">98.4 (est.)</td>
+          <td class="r"><span class="badge up">↑ +1.7 pts</span></td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+        </tr>
+        <tr>
+          <td><strong>Occupancy Index (MPI)</strong></td>
+          <td class="r">109.8</td>
+          <td class="r">~99.9</td>
+          <td class="r"><span class="badge up">↑ +10.0%</span></td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+        </tr>
+        <tr>
+          <td><strong>ADR Index (ARI)</strong></td>
+          <td class="r">91.1</td>
+          <td class="r">~98.5</td>
+          <td class="r"><span class="badge down">↓ Below target</span></td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+        </tr>
+        <tr>
+          <td><strong>RevPAR Rank</strong></td>
+          <td class="r"><strong>#1 / 7</strong></td>
+          <td class="r">#3 / 7</td>
+          <td class="r"><span class="badge up">↑ +2 positions</span></td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-label">Revenue Manager's Read</div>
+    <p>The occupancy index of 109.8 — well above the 105.0 target — is a genuine strength and reflects exceptional demand capture. However, an ADR index of 91.1 against a 110.0 target, and a RevPAR index of 100.1 against a 115.0 target, shows the property is currently trading volume for rate. The GR SMRF segment at $159 ADR is the primary cause. Before pursuing any tactical rate adjustments, the first question must be: <strong>Is the GR SMRF segment a strategic choice or a structural pricing gap?</strong> If strategic (e.g., a specific corporate or relocation contract), the ADR underperformance is explainable. If it's accumulated OTA or walk-in demand at deeply discounted rates, it requires intervention.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 2 — SEGMENT DRILLDOWN
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-eyebrow">Revenue Management</div>
+  <h2 class="section-h2">Segment Drilldown — March 2026 vs. March 2025</h2>
+
+  <p class="section-intro">
+    The year-over-year segment comparison reveals a property in genuine transformation. The GR SMRF segment went from essentially zero to the second-largest volume driver overnight, while OTA non-refundable and OTA flexible channels both lost significant ground. Corporate segments grew meaningfully. The mix story this month is less about which segments performed — and more about understanding the <strong>price of that performance</strong>.
+  </p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Segment</th>
+          <th class="r">RN '26</th>
+          <th class="r">ADR '26</th>
+          <th class="r">Revenue '26</th>
+          <th class="r">Mix %</th>
+          <th class="r">RN Δ</th>
+          <th class="r">ADR Δ</th>
+          <th class="r">Revenue Δ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tbl-highlight">
+          <td><strong>TR NEG CORP</strong> <span class="badge winner">Top Revenue</span></td>
+          <td class="r">707</td>
+          <td class="r">$286.55</td>
+          <td class="r"><strong>$202,592</strong></td>
+          <td class="r">32.2%</td>
+          <td class="r"><span class="badge up">+106</span></td>
+          <td class="r"><span class="badge up">+$17.45</span></td>
+          <td class="r"><span class="badge up">+$40,861</span></td>
+        </tr>
+        <tr class="tbl-highlight">
+          <td><strong>GR SMRF</strong> <span class="badge warn">⚠ New Dominant Segment</span></td>
+          <td class="r">511</td>
+          <td class="r">$159.39</td>
+          <td class="r"><strong>$81,449</strong></td>
+          <td class="r">12.9%</td>
+          <td class="r"><span class="badge up">+506</span></td>
+          <td class="r"><span class="badge down">−$147.61</span></td>
+          <td class="r"><span class="badge up">+$79,914</span></td>
+        </tr>
+        <tr>
+          <td>TR OTA NREF</td>
+          <td class="r">300</td>
+          <td class="r">$273.28</td>
+          <td class="r">$81,984</td>
+          <td class="r">13.0%</td>
+          <td class="r"><span class="badge down">−133</span></td>
+          <td class="r"><span class="badge up">+$52.38</span></td>
+          <td class="r"><span class="badge down">−$13,666</span></td>
+        </tr>
+        <tr>
+          <td>CT CORP</td>
+          <td class="r">416</td>
+          <td class="r">$175.98</td>
+          <td class="r">$73,206</td>
+          <td class="r">11.6%</td>
+          <td class="r"><span class="badge up">+156</span></td>
+          <td class="r"><span class="badge down">−$6.64</span></td>
+          <td class="r"><span class="badge up">+$25,725</span></td>
+        </tr>
+        <tr>
+          <td>TR RTL NREF</td>
+          <td class="r">167</td>
+          <td class="r">$343.75</td>
+          <td class="r">$57,407</td>
+          <td class="r">9.1%</td>
+          <td class="r"><span class="badge down">−21</span></td>
+          <td class="r"><span class="badge up">+$29.35</span></td>
+          <td class="r"><span class="badge down">−$1,700</span></td>
+        </tr>
+        <tr>
+          <td>TR RTL FLEX</td>
+          <td class="r">139</td>
+          <td class="r">$302.74</td>
+          <td class="r">$42,081</td>
+          <td class="r">6.7%</td>
+          <td class="r"><span class="badge down">−31</span></td>
+          <td class="r"><span class="badge up">+$16.58</span></td>
+          <td class="r"><span class="badge down">−$6,567</span></td>
+        </tr>
+        <tr>
+          <td>TR NEG MED</td>
+          <td class="r">89</td>
+          <td class="r">$218.66</td>
+          <td class="r">$19,461</td>
+          <td class="r">3.1%</td>
+          <td class="r"><span class="badge up">+78</span></td>
+          <td class="r"><span class="badge down">−$4.89</span></td>
+          <td class="r"><span class="badge up">+$17,002</span></td>
+        </tr>
+        <tr>
+          <td>GR CORP</td>
+          <td class="r">148</td>
+          <td class="r">$158.46</td>
+          <td class="r">$23,452</td>
+          <td class="r">3.7%</td>
+          <td class="r"><span class="badge down">−21</span></td>
+          <td class="r"><span class="badge down">−$108.35</span></td>
+          <td class="r"><span class="badge down">−$21,639</span></td>
+        </tr>
+        <tr>
+          <td>TR LOYALTY</td>
+          <td class="r">26</td>
+          <td class="r">$421.56</td>
+          <td class="r">$10,960</td>
+          <td class="r">1.7%</td>
+          <td class="r"><span class="badge up">+15</span></td>
+          <td class="r"><span class="badge up">+$124.84</span></td>
+          <td class="r"><span class="badge up">+$7,696</span></td>
+        </tr>
+        <tr>
+          <td>TR OTA FLEX</td>
+          <td class="r">44</td>
+          <td class="r">$333.25</td>
+          <td class="r">$14,663</td>
+          <td class="r">2.3%</td>
+          <td class="r"><span class="badge down">−108</span></td>
+          <td class="r"><span class="badge up">+$79.95</span></td>
+          <td class="r"><span class="badge down">−$23,839</span></td>
+        </tr>
+        <tr>
+          <td>TR CONS</td>
+          <td class="r">23</td>
+          <td class="r">$340.58</td>
+          <td class="r">$7,833</td>
+          <td class="r">1.2%</td>
+          <td class="r"><span class="badge up">+21</span></td>
+          <td class="r"><span class="badge up">+$89.48</span></td>
+          <td class="r"><span class="badge up">+$7,331</span></td>
+        </tr>
+        <tr>
+          <td>CT IND</td>
+          <td class="r">35</td>
+          <td class="r">$159.11</td>
+          <td class="r">$5,569</td>
+          <td class="r">0.9%</td>
+          <td class="r"><span class="badge up">+13</span></td>
+          <td class="r"><span class="badge down">−$49.89</span></td>
+          <td class="r"><span class="badge up">+$971</span></td>
+        </tr>
+        <tr>
+          <td>CT RELO</td>
+          <td class="r">0</td>
+          <td class="r">—</td>
+          <td class="r">$0</td>
+          <td class="r">0.0%</td>
+          <td class="r"><span class="badge down">−31</span></td>
+          <td class="r">—</td>
+          <td class="r"><span class="badge down">−$4,650</span></td>
+        </tr>
+        <tr>
+          <td>Bedrock/Rocket</td>
+          <td class="r">14</td>
+          <td class="r">$288.38</td>
+          <td class="r">$4,037</td>
+          <td class="r">0.6%</td>
+          <td class="r"><span class="badge up">+13</span></td>
+          <td class="r"><span class="badge up">+$65.18</span></td>
+          <td class="r"><span class="badge up">+$3,814</span></td>
+        </tr>
+        <tr class="tbl-total">
+          <td><strong>TOTAL</strong></td>
+          <td class="r"><strong>2,632</strong></td>
+          <td class="r"><strong>$239</strong></td>
+          <td class="r"><strong>$629,144</strong></td>
+          <td class="r"><strong>100%</strong></td>
+          <td class="r"><strong>+567</strong></td>
+          <td class="r"><strong>−$11</strong></td>
+          <td class="r"><strong>+$113,275</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Segment callout cards -->
+  <div class="card-grid-2">
+    <div class="insight-card red-border">
+      <h4>GR SMRF: The Dominant New Force — at What Price?</h4>
+      <p>GR SMRF exploded from 5 room nights to 511 — a 10,200% year-over-year increase — and is now the second-largest segment by volume. The $79,914 in new revenue is real and meaningful. But at $159.39 ADR — $79.61 below portfolio average — this segment is compressing blended rate substantially. Without it, March ADR would have been approximately <strong>$256</strong>, well above the comp set. The critical questions for leadership: What is GR SMRF? Is this a structured rate plan (SMERF group, monthly furnished rental, corporate relocation block)? Is the pricing intentional and contracted, or has it accumulated through opportunistic discounting? Root cause analysis is required before Q2 strategy is set.</p>
+    </div>
+    <div class="insight-card gold-border">
+      <h4>OTA Segment: Volume Down, Rate Up — A Mixed Signal</h4>
+      <p>Both OTA channels lost significant room nights: TR OTA NREF fell 133 nights (−31%) and TR OTA FLEX fell 108 nights (−71%). However, ADRs on both improved substantially — OTA NREF ADR rose $52.38 and OTA FLEX rose $79.95. This rate improvement suggests either better rate positioning on OTA channels, or that the channel mix within OTA shifted toward higher-intent travelers. Combined OTA revenue fell from $134,152 to $96,647 (−$37,505), but at better rates. The question is whether the volume loss is structural (OTA channels receiving less inventory) or demand-driven.</p>
+    </div>
+    <div class="insight-card green-border">
+      <h4>Corporate Segment: Genuine Growth</h4>
+      <p>TR NEG CORP grew 106 room nights (+17.6%) at an improved ADR of $286.55, generating $40,861 in additional revenue. CT CORP added 156 room nights (+60%) though at slightly lower ADR. TR NEG MED added 78 room nights. Combined, corporate segments added approximately $83K in incremental revenue — the property's most valuable organic growth story. Entering April corporate RFP season, this momentum should be supported aggressively. TR LOYALTY grew 15 nights to 26 at a strong $421.56 ADR — a positive signal worth monitoring.</p>
+    </div>
+    <div class="insight-card orange-border">
+      <h4>CT RELO: A Segment Gone Dark</h4>
+      <p>CT RELO (Corporate Relocation) contributed 31 room nights at $150 ADR in March 2025 — a modest but meaningful segment — and generated zero bookings in March 2026. Relocation business can be highly cyclical, tied to specific employer programs or seasonal peaks. This disappearance should be investigated: is this a distribution issue (rate plans not visible to relocation companies), a loss of a specific account, or a seasonal pattern? Relocation is typically a high-LOS segment that would pair well with the property's extended-stay orientation.</p>
+    </div>
+  </div>
+
+  <!-- Revenue mix visual -->
+  <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin:32px 0 12px;">Revenue Contribution by Segment — March 2026 vs. March 2025</h3>
+  <div style="margin-bottom:6px;font-size:12px;color:var(--muted);">March 2026</div>
+  <div class="mix-bar">
+    <div class="mix-seg" style="width:32%;background:#2d6a4f;" title="TR NEG CORP 32.2%">32%</div>
+    <div class="mix-seg" style="width:13%;background:#b8902a;" title="GR SMRF 12.9%">13%</div>
+    <div class="mix-seg" style="width:13%;background:#4a90d9;" title="TR OTA NREF 13%">13%</div>
+    <div class="mix-seg" style="width:12%;background:#6c5b8c;" title="CT CORP 11.6%">12%</div>
+    <div class="mix-seg" style="width:9%;background:#c05a14;" title="TR RTL NREF 9.1%">9%</div>
+    <div class="mix-seg" style="width:7%;background:#5c9e6b;" title="TR RTL FLEX 6.7%">7%</div>
+    <div class="mix-seg" style="width:14%;background:#999;" title="Other 14%">14%</div>
+  </div>
+  <div style="margin-top:12px;margin-bottom:6px;font-size:12px;color:var(--muted);">March 2025</div>
+  <div class="mix-bar">
+    <div class="mix-seg" style="width:31%;background:#2d6a4f;" title="TR NEG CORP 31.4%">31%</div>
+    <div class="mix-seg" style="width:0%;background:#b8902a;" title="GR SMRF 0.3%"></div>
+    <div class="mix-seg" style="width:19%;background:#4a90d9;" title="TR OTA NREF 18.5%">19%</div>
+    <div class="mix-seg" style="width:9%;background:#6c5b8c;" title="CT CORP 9.2%">9%</div>
+    <div class="mix-seg" style="width:11%;background:#c05a14;" title="TR RTL NREF 11.5%">11%</div>
+    <div class="mix-seg" style="width:9%;background:#5c9e6b;" title="TR RTL FLEX 9.4%">9%</div>
+    <div class="mix-seg" style="width:21%;background:#999;" title="Other 21%">21%</div>
+  </div>
+  <div class="mix-legend">
+    <div class="mix-legend-item"><div class="mix-dot" style="background:#2d6a4f;"></div>TR NEG CORP</div>
+    <div class="mix-legend-item"><div class="mix-dot" style="background:#b8902a;"></div>GR SMRF (new)</div>
+    <div class="mix-legend-item"><div class="mix-dot" style="background:#4a90d9;"></div>TR OTA NREF</div>
+    <div class="mix-legend-item"><div class="mix-dot" style="background:#6c5b8c;"></div>CT CORP</div>
+    <div class="mix-legend-item"><div class="mix-dot" style="background:#c05a14;"></div>TR RTL NREF</div>
+    <div class="mix-legend-item"><div class="mix-dot" style="background:#5c9e6b;"></div>TR RTL FLEX</div>
+    <div class="mix-legend-item"><div class="mix-dot" style="background:#999;"></div>All Other</div>
+  </div>
+
+  <div class="callout gold mt-24">
+    <div class="callout-label">Forward-Looking</div>
+    <p>The Length-of-Stay data confirms the extended-stay orientation: the 8+ night segment grew from 490 to 1,424 room nights, now representing 42.4% of revenue (vs. 18.5% prior year). At $187 ADR, this segment drives the ADR compression alongside GR SMRF. Heading into April–June, the revenue management priority is not volume — it's understanding the right price for the right guest at the right length of stay. <strong>A minimum-night pricing strategy and extended-stay rate tiering should be on the agenda before the corporate travel season peaks.</strong></p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 3 — DIGITAL & WEBSITE
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-eyebrow">Digital & Marketing</div>
+  <h2 class="section-h2">Website Traffic & Channel Performance</h2>
+
+  <p class="section-intro">
+    Total website sessions held at 9,447 in March — a slight decline of 4.1% year-over-year — but the more consequential story is what happened inside those sessions. Website revenue fell 14.7% to $123.7K despite adequate traffic, pointing to a conversion problem rather than a demand problem. Engagement quality metrics (session duration up 14%, engagement rate 65%) suggest visitors are arriving with intent — but something is breaking in the booking funnel.
+  </p>
+
+  <div class="channel-grid">
+    <div class="channel-tile">
+      <div class="channel-tile-label">All Sessions</div>
+      <div class="channel-tile-val">9,447</div>
+      <div class="channel-tile-sub">vs ~9,847 PY<br><span style="color:var(--red);">↓ −4.1% YoY</span></div>
+    </div>
+    <div class="channel-tile star">
+      <div class="channel-tile-label">Search (Organic) <span class="badge up" style="font-size:9px;">Largest</span></div>
+      <div class="channel-tile-val">5,413</div>
+      <div class="channel-tile-sub">+1.8% YoY · $59.8K rev<br><span style="color:var(--green);">Stable volume</span></div>
+    </div>
+    <div class="channel-tile">
+      <div class="channel-tile-label">Direct</div>
+      <div class="channel-tile-val">2,468</div>
+      <div class="channel-tile-sub">Rev/session: $22.69<br><span style="color:var(--red);">↓ −23.3% YoY · $56K rev</span></div>
+    </div>
+    <div class="channel-tile">
+      <div class="channel-tile-label">Referral</div>
+      <div class="channel-tile-val">759</div>
+      <div class="channel-tile-sub">Rev/session: $16.44<br><span style="color:var(--green);">↑ +54% YoY · $12.5K rev</span></div>
+    </div>
+    <div class="channel-tile">
+      <div class="channel-tile-label">Email</div>
+      <div class="channel-tile-val">248</div>
+      <div class="channel-tile-sub">↑ +26.7% sessions<br>$2.86 rev/session</div>
+    </div>
+  </div>
+
+  <div class="kpi-row kpi-row-5 mt-16">
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Website Revenue</div>
+      <div class="kpi-tile-value" style="font-size:28px;">$123.7K</div>
+      <div class="kpi-change down mt-8">↓ −14.7% YoY</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Conversion Rate</div>
+      <div class="kpi-tile-value" style="font-size:28px;">2.0%</div>
+      <div class="kpi-change down mt-8">↓ −14.2% YoY</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Revenue / Session</div>
+      <div class="kpi-tile-value" style="font-size:28px;">$13.09</div>
+      <div class="kpi-change down mt-8">↓ vs ~$14.08 PY</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Engagement Rate</div>
+      <div class="kpi-tile-value" style="font-size:28px;">65.0%</div>
+      <div class="kpi-change up mt-8">↑ +2.8% YoY</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Avg Session Duration</div>
+      <div class="kpi-tile-value" style="font-size:28px;">2:57</div>
+      <div class="kpi-change up mt-8">↑ +14.0% YoY</div>
+    </div>
+  </div>
+
+  <div class="card-grid-2 mt-24">
+    <div class="insight-card red-border">
+      <h4>Direct Traffic Declining: −23.3% YoY</h4>
+      <p>Direct traffic (typed/bookmarked visits) fell by more than a quarter. Of all channels, direct has the highest revenue-per-session ($22.69) — visitors who arrive directly are pre-qualified brand believers with high booking intent. Losing 750+ of these sessions represents roughly $17,000 in implied revenue impact. This decline typically reflects three causes: reduced repeat guest engagement, waning brand awareness from prior marketing, or guests who would have booked direct being captured through OTA or metasearch instead. A CRM email re-engagement campaign targeting prior guests from the last 18 months should be prioritized.</p>
+    </div>
+    <div class="insight-card gold-border">
+      <h4>The Extended Stay Page: Traffic Without Conversion</h4>
+      <p>The ROOST Detroit Extended Stay landing page received 6,812 sessions — 72% of total site traffic — and recorded zero attributed bookings in the analytics. This disconnect between traffic and conversion is either a tracking/attribution issue (extended stay inquiries converting via phone or email) or a genuine conversion funnel failure. Before allocating more paid media budget to extended stay keywords, this must be resolved. If 6,812 visitors are arriving on that page and none are booking online, either the tracking pixel is misconfigured or the booking flow from that page is broken. This deserves an immediate audit.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 4 — PPC
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-eyebrow">Paid Search Performance</div>
+  <h2 class="section-h2">PPC: Misfiring Where It Counts Most</h2>
+
+  <p class="section-intro">
+    ROOST Detroit is spending approximately $9,447/month on paid search — roughly 1.5% of room revenue — a reasonable investment for a 120-apartment extended-stay hotel. The budget level is appropriate. <strong>The allocation of that budget is not.</strong> The structural challenge is straightforward: an estimated 65% of spend is defending the brand against competitors already in the auction, while the campaigns designed to reach new guests — the primary job of PPC — are operating on minimal resources and generating minimal results.
+  </p>
+
+  <div style="background:var(--header-bg);border-radius:4px;padding:32px 36px;margin-bottom:28px;">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Benchmark Framework — 120-Apartment Extended Stay Hotel · ~$240 ADR · Detroit, MI</div>
+    <div class="benchmark-grid" style="margin:0;">
+      <div class="benchmark-card" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);">
+        <div class="benchmark-card-label" style="color:rgba(255,255,255,0.4);">Brand Spend Share</div>
+        <div class="benchmark-card-value" style="color:#fff;">30 – 50%</div>
+        <div class="benchmark-card-desc" style="color:rgba(255,255,255,0.45);">Higher end justified when OTAs actively bid on the property name. Extended stay brands often need stronger brand defense as OTA competition for long-term stays intensifies.</div>
+      </div>
+      <div class="benchmark-card" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);">
+        <div class="benchmark-card-label" style="color:rgba(255,255,255,0.4);">Non-Brand ROAS</div>
+        <div class="benchmark-card-value" style="color:#fff;">2 – 5×</div>
+        <div class="benchmark-card-desc" style="color:rgba(255,255,255,0.45);">Extended stay at ~$240 ADR has a lower absolute ADR ceiling than luxury properties. Realistic ROAS benchmark is lower than luxury boutique, but campaigns should still exceed 2×.</div>
+      </div>
+      <div class="benchmark-card" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);">
+        <div class="benchmark-card-label" style="color:rgba(255,255,255,0.4);">Brand ROAS</div>
+        <div class="benchmark-card-value" style="color:#fff;">3 – 7×</div>
+        <div class="benchmark-card-desc" style="color:rgba(255,255,255,0.45);">Brand ROAS is naturally high because it captures people already searching the property — but much of that revenue would convert organically. True incremental value is lower than reported ROAS implies.</div>
+      </div>
+      <div class="benchmark-card" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1);">
+        <div class="benchmark-card-label" style="color:rgba(255,255,255,0.4);">Quality Score</div>
+        <div class="benchmark-card-value" style="color:#fff;">6.0 – 8.0</div>
+        <div class="benchmark-card-desc" style="color:rgba(255,255,255,0.45);">QS above 7 signals strong keyword-to-ad-to-landing-page alignment. Non-brand campaigns typically score lower than brand — scores below 5 indicate structural ad relevance or landing page problems.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-row kpi-row-4">
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Quality Score (Campaign Range)</div>
+      <div class="kpi-tile-value" style="font-size:26px;">10.0 / 10</div>
+      <div class="kpi-tile-comp">Brand campaign artifact · Non-brand is the issue</div>
+      <div class="kpi-change up mt-8">Brand: 10.0 · Non-brand: needs review</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Brand Spend Share</div>
+      <div class="kpi-tile-value" style="font-size:26px;">~65%</div>
+      <div class="kpi-tile-comp">Benchmark: 30–50%</div>
+      <div class="kpi-change warn mt-8">↑ Over-allocated vs. benchmark</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Non-Brand Spend Share</div>
+      <div class="kpi-tile-value" style="font-size:26px;">~35%</div>
+      <div class="kpi-tile-comp">Benchmark: 50–70%</div>
+      <div class="kpi-change down mt-8">↓ Severely under-invested</div>
+    </div>
+    <div class="kpi-tile gold-border">
+      <div class="kpi-tile-label">Total Monthly PPC Spend</div>
+      <div class="kpi-tile-value" style="font-size:26px;">$9,447</div>
+      <div class="kpi-tile-comp">~1.5% of room revenue</div>
+      <div class="kpi-change up mt-8">Budget level is appropriate</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin:32px 0 16px;">Campaign-by-Campaign Assessment</h3>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Campaign</th>
+          <th class="r">Impressions</th>
+          <th class="r">Clicks</th>
+          <th class="r">Avg CPC</th>
+          <th class="r">Cost</th>
+          <th class="r">ROAS</th>
+          <th class="r">Revenue</th>
+          <th class="r">Spend %</th>
+          <th class="r">QS</th>
+          <th class="r">Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tbl-highlight">
+          <td><strong>Brand — Detroit</strong></td>
+          <td class="r">6,781</td>
+          <td class="r">1,534</td>
+          <td class="r">$4.00</td>
+          <td class="r">$6,141</td>
+          <td class="r">4.30×</td>
+          <td class="r">$26,391</td>
+          <td class="r"><strong>65%</strong></td>
+          <td class="r">~10.0</td>
+          <td class="r"><span class="verdict over">Over-Allocated</span></td>
+        </tr>
+        <tr>
+          <td>Hotel - RD (Non-Brand)</td>
+          <td class="r">21,902</td>
+          <td class="r">1,545</td>
+          <td class="r">$1.54</td>
+          <td class="r">$2,386</td>
+          <td class="r">0.30×</td>
+          <td class="r">$707</td>
+          <td class="r">25%</td>
+          <td class="r">~6–8</td>
+          <td class="r"><span class="verdict fix">Audit + Scale</span></td>
+        </tr>
+        <tr>
+          <td style="padding-left:28px;">└ Extended Stay - RD</td>
+          <td class="r">2,330</td>
+          <td class="r">124</td>
+          <td class="r">$7.42</td>
+          <td class="r">$920</td>
+          <td class="r">0.00×</td>
+          <td class="r">$0</td>
+          <td class="r">10%</td>
+          <td class="r">—</td>
+          <td class="r"><span class="verdict watch">Budget Fix First</span></td>
+        </tr>
+        <tr class="tbl-total">
+          <td><strong>Grand Total</strong></td>
+          <td class="r">31,013</td>
+          <td class="r">3,203</td>
+          <td class="r">$2.95</td>
+          <td class="r">$9,447</td>
+          <td class="r">2.87×</td>
+          <td class="r">$27,097</td>
+          <td class="r">100%</td>
+          <td class="r">—</td>
+          <td class="r">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-grid-2">
+    <div class="insight-card red-border">
+      <h4>The Brand Campaign: Necessary, But Over-Fed</h4>
+      <p>Brand defense is important — OTAs routinely bid on independent property names, and ceding that auction space means paying commission on guests who intended to book direct. The brand campaign at 4.30× ROAS is doing its job. The problem is scale. At $6,141 and 65% of total spend, the brand campaign has grown far beyond its defensive purpose. A well-calibrated brand campaign for a 120-apartment property in a mid-sized market like Detroit should require roughly $1,500–$3,000/month to maintain strong impression share. Anything beyond that is likely capturing organic intent that would convert without paid assistance. <strong>Recommendation: Cap brand spend at approximately 35–40% of total budget (~$3,300–$3,800/month).</strong></p>
+    </div>
+    <div class="insight-card orange-border">
+      <h4>Extended Stay Campaign: 14 Days of Lost Visibility</h4>
+      <p>The Extended Stay campaign's IS% trend shows a near-complete blackout from approximately March 10–23 — consistent with daily budget exhaustion. At $7.42 average CPC (4.8× higher than the Hotel campaign), this campaign burned through its monthly budget in the first third of the month and went dark during what is likely peak extended-stay search volume. At a 0.00× ROAS, this campaign appears to have a conversion attribution problem — it's unlikely that 124 clicks generated zero revenue. The first step is diagnosing the conversion tracking before increasing budget. <strong>But the budget cap must be resolved immediately.</strong></p>
+    </div>
+  </div>
+
+  <div class="callout red mt-8">
+    <div class="callout-label">Critical Finding: IS% Lost to Rank — 81.35%</div>
+    <p>Over 81% of eligible non-brand impressions are being lost because ad rank is too low. This means ROOST Detroit's non-brand ads are losing the majority of auctions they could be competing in. Despite a reported Quality Score of 10/10 (a brand campaign artifact — actual non-brand QS is lower), bid strategy is insufficient for competitive market auction prices. The IS% lost to rank problem explains why 24,000 weekly impressions are available but only ~1,500 are converting to clicks. <strong>Increasing bids on proven non-brand keywords and auditing landing page relevance for each ad group are the two highest-impact immediate actions.</strong></p>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin:32px 0 16px;">Illustrative Budget Reallocation — Current vs. Recommended</h3>
+
+  <div class="budget-grid">
+    <div class="budget-side">
+      <div class="budget-side-label">Current Allocation</div>
+      <div class="budget-row"><span class="name">Brand — Detroit</span><span class="amt">$6,141 (65%)</span></div>
+      <div class="budget-row"><span class="name">Hotel - RD (Non-Brand)</span><span class="amt ok">$2,386 (25%)</span></div>
+      <div class="budget-row"><span class="name">Extended Stay - RD</span><span class="amt ok">$920 (10%)</span></div>
+      <div class="budget-total"><span>Total</span><span>$9,447</span></div>
+      <p class="budget-note">Brand campaign is consuming 65% of spend while generating revenue from people already intending to book. Non-brand campaigns — the only way to reach net-new guests — receive the remainder.</p>
+    </div>
+    <div class="budget-side light">
+      <div class="budget-side-label">Recommended Reallocation</div>
+      <div class="budget-row"><span class="name">Brand (capped)</span><span class="amt" style="color:var(--orange);">$3,200 (35%)</span></div>
+      <div class="budget-row"><span class="name">Hotel - RD (Non-Brand) ↑↑</span><span class="amt" style="color:var(--green);">$3,800 (42%)</span></div>
+      <div class="budget-row"><span class="name">Extended Stay - RD ↑</span><span class="amt" style="color:var(--green);">$1,500 (16%)</span></div>
+      <div class="budget-row"><span class="name">Non-Brand Best/Chas. — audit</span><span class="amt" style="color:var(--muted);">$0 — pending</span></div>
+      <div class="budget-total"><span>Total</span><span>$8,500</span></div>
+      <p class="budget-note" style="color:var(--muted);">At current non-brand ROAS trends, reallocating $2,900 from brand to non-brand campaigns could conservatively generate additional revenue from guests who would not otherwise have found ROOST Detroit.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 5 — STRATEGIC PRIORITIES
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-eyebrow">Looking Ahead</div>
+  <h2 class="section-h2">Strategic Priorities — April & Q2 2026</h2>
+
+  <p class="section-intro">
+    Entering the spring corporate travel season with #1 RevPAR market rank, strong occupancy momentum, and meaningful corporate segment growth — the fundamentals are genuinely strong. The following priorities should be actioned before end of April to protect and build on this position.
+  </p>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:8px 0;">
+    <div class="priority-item" style="padding:24px 32px;">
+      <div class="priority-num">1</div>
+      <div class="priority-body">
+        <div class="priority-title">Identify and Price the GR SMRF Segment</div>
+        <p class="priority-text">511 room nights at $159 ADR from a segment that was essentially non-existent a year ago is the most important unanswered question in March's data. Before any other pricing strategy is developed, leadership needs to know: What is GR SMRF? Is this a specific contracted group, a social/SMERF group block, a monthly furnished-apartment rate plan, or a catch-all for discounted miscellaneous business? At $159 ADR the property is leaving approximately $40,000/month on the table compared to its portfolio average — if this business can bear a higher rate. Conduct a rate plan audit, pull the specific reservations under GR SMRF, and determine whether this pricing is strategic or structural. This one decision has more revenue impact than any other initiative on this list.</p>
+      </div>
+    </div>
+    <div class="priority-item" style="padding:24px 32px;">
+      <div class="priority-num">2</div>
+      <div class="priority-body">
+        <div class="priority-title">Implement Extended-Stay Rate Tiering</div>
+        <p class="priority-text">The 8+ night segment grew by 934 room nights to 1,424 — now 42.4% of revenue at $187 ADR. This is genuine demand, but the pricing structure is binary (transient vs. deep discount). Introduce rate bands: 1–3 nights at standard rate, 4–7 nights at a modest discount (~10%), 8–14 nights at ~15% discount, and 15+ nights at ~20% discount. This approach rewards length of stay without gifting a $187 rate to a 9-night guest who might accept $215. Even a $20 improvement in extended-stay ADR would generate approximately $28,000 in additional monthly revenue at current volumes. Present a proposed rate tiering structure at the April revenue strategy meeting.</p>
+      </div>
+    </div>
+    <div class="priority-item" style="padding:24px 32px;">
+      <div class="priority-num">3</div>
+      <div class="priority-body">
+        <div class="priority-title">Restructure PPC Allocation — Brand Defense Yes, Brand Dominance No</div>
+        <p class="priority-text">Cap brand search spend at approximately 35–40% of total PPC budget (~$3,200–$3,800/month) — enough to defend against OTA bidding on the property name while maintaining strong impression share. Redirect the freed budget into non-brand Hotel and Extended Stay campaigns. Fix the Extended Stay campaign's daily budget cap so it doesn't go dark mid-month. Conduct a conversion audit on the Extended Stay landing page before scaling spend further — 124 clicks generating zero attributed revenue suggests a tracking or conversion path problem. The conservatively projected upside from reallocation is meaningful new-guest revenue that brand spend categorically cannot generate.</p>
+      </div>
+    </div>
+    <div class="priority-item" style="padding:24px 32px;">
+      <div class="priority-num">4</div>
+      <div class="priority-body">
+        <div class="priority-title">Fix the Extended Stay Booking Engine Conversion Funnel</div>
+        <p class="priority-text">The Extended Stay landing page is the highest-traffic page on the site at 6,812 sessions — 72% of total site traffic — with zero recorded bookings. This is either a tracking failure or a conversion funnel failure, both of which are actionable. (1) Validate that the booking engine fires a conversion event on the Extended Stay page. (2) Review the booking flow from that specific landing page — is the call-to-action visible and functional? (3) Consider that extended stay inquiries may primarily come via phone/email, in which case call tracking should be implemented on that page. Resolving this one conversion gap has more near-term revenue potential than almost any other digital initiative.</p>
+      </div>
+    </div>
+    <div class="priority-item" style="padding:24px 32px;">
+      <div class="priority-num">5</div>
+      <div class="priority-body">
+        <div class="priority-title">Defend and Grow OTA Non-Refundable Position</div>
+        <p class="priority-text">TR OTA NREF fell 133 room nights (−31%) to 300 nights — the second-largest volume decline in the portfolio. However, ADR on this channel rose $52.38, suggesting rate positioning improved even as volume fell. This could reflect a deliberate inventory restriction decision, a rate competitiveness issue, or the displacement of OTA demand by the large GR SMRF block. Before Q2, verify that OTA channel inventory allocations are appropriate and that the TR OTA NREF rate plan is competitive on Expedia and Booking.com for the 1–7 night window. OTA non-refundable at $273 ADR is the highest-quality OTA channel and should be protected.</p>
+      </div>
+    </div>
+    <div class="priority-item" style="padding:24px 32px;border-bottom:none;">
+      <div class="priority-num">6</div>
+      <div class="priority-body">
+        <div class="priority-title">Recover Direct Traffic — CRM Reengagement Campaign</div>
+        <p class="priority-text">Direct traffic fell 23.3% year-over-year — the steepest channel decline in the portfolio — from a channel that generates $22.69 per session versus the site average of $13.09. Recovering 500 direct sessions represents approximately $11,000 in implied revenue. Initiate a CRM email reengagement campaign targeting guests from the prior 18 months who have not returned. Offer a book-direct incentive (early check-in, apartment upgrade, or flexible cancellation) to reactivate lapsed guests during Q2. Simultaneously, review metasearch feed alignment — direct bookings and metasearch are often correlated and may have been displaced by OTA metasearch presence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FULL SCORECARD
+══════════════════════════════════════ -->
+<section class="section">
+  <div class="section-eyebrow">Monthly Scorecard</div>
+  <h2 class="section-h2">Performance at a Glance</h2>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:8px 32px 24px;">
+    <div class="scorecard-row" style="border-bottom:none;padding-bottom:4px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);flex:1;">STR & Revenue</div></div>
+    <div style="height:1px;background:var(--border-light);margin-bottom:4px;"></div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Occupancy Rate</strong><div class="scorecard-sub">vs Comp Set: 65.0%</div></div>
+      <div class="scorecard-val">71.4%</div>
+      <div class="scorecard-target">Prior: 56.5%</div>
+      <div class="scorecard-status"><span class="pill above">Above Target</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>ADR</strong><div class="scorecard-sub">Comp Set: $262 · Gap: −$23</div></div>
+      <div class="scorecard-val">$239</div>
+      <div class="scorecard-target">Prior: $250</div>
+      <div class="scorecard-status"><span class="pill below">Below Target</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>RevPAR</strong><div class="scorecard-sub">Comp Set: $170 — at parity</div></div>
+      <div class="scorecard-val">$170</div>
+      <div class="scorecard-target">Prior: $141</div>
+      <div class="scorecard-status"><span class="pill ok">Parity</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>RevPAR Index (RGI)</strong></div>
+      <div class="scorecard-val">100.1</div>
+      <div class="scorecard-target">Target: ≥ 115.0</div>
+      <div class="scorecard-status"><span class="pill below">Below Target</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Occupancy Index (MPI)</strong></div>
+      <div class="scorecard-val">109.8</div>
+      <div class="scorecard-target">Target: ≥ 105.0</div>
+      <div class="scorecard-status"><span class="pill above">Above Target</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>ADR Index (ARI)</strong></div>
+      <div class="scorecard-val">91.1</div>
+      <div class="scorecard-target">Target: ≥ 110.0</div>
+      <div class="scorecard-status"><span class="pill below">Below Target</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>RevPAR Rank</strong></div>
+      <div class="scorecard-val">#1 / 7</div>
+      <div class="scorecard-target">Prior: #3 / 7</div>
+      <div class="scorecard-status"><span class="pill above">Top Tier</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Total Room Revenue</strong></div>
+      <div class="scorecard-val">$629K</div>
+      <div class="scorecard-target">Prior: $516K</div>
+      <div class="scorecard-status"><span class="pill above">+22.0%</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Room Nights Sold</strong></div>
+      <div class="scorecard-val">2,632</div>
+      <div class="scorecard-target">Prior: 2,065</div>
+      <div class="scorecard-status"><span class="pill above">+27.5%</span></div>
+    </div>
+
+    <div class="scorecard-row" style="border-bottom:none;padding-bottom:4px;margin-top:12px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);flex:1;">Paid Search (PPC)</div></div>
+    <div style="height:1px;background:var(--border-light);margin-bottom:4px;"></div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Total PPC Revenue</strong></div>
+      <div class="scorecard-val">$27.1K</div>
+      <div class="scorecard-target">Prior: ~$39K</div>
+      <div class="scorecard-status"><span class="pill below">−31.2%</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Overall ROAS</strong></div>
+      <div class="scorecard-val">2.87×</div>
+      <div class="scorecard-target">Benchmark: 2–5×</div>
+      <div class="scorecard-status"><span class="pill ok">In Range</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Brand ROAS</strong></div>
+      <div class="scorecard-val">4.30×</div>
+      <div class="scorecard-target">Benchmark: 3–7×</div>
+      <div class="scorecard-status"><span class="pill above">On Target</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Non-Brand ROAS</strong><div class="scorecard-sub">Incremental revenue focus</div></div>
+      <div class="scorecard-val">0.21×</div>
+      <div class="scorecard-target">Benchmark: 2–5×</div>
+      <div class="scorecard-status"><span class="pill below">Critical</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Brand Spend Share</strong></div>
+      <div class="scorecard-val">~65%</div>
+      <div class="scorecard-target">Benchmark: 30–50%</div>
+      <div class="scorecard-status"><span class="pill below">Over-allocated</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Quality Score (Brand)</strong></div>
+      <div class="scorecard-val">10.0/10</div>
+      <div class="scorecard-target">Target: 6.0–8.0</div>
+      <div class="scorecard-status"><span class="pill above">Strong</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>IS% Lost to Rank (Non-Brand)</strong></div>
+      <div class="scorecard-val">81.35%</div>
+      <div class="scorecard-target">Target: &lt; 30%</div>
+      <div class="scorecard-status"><span class="pill below">Critical</span></div>
+    </div>
+
+    <div class="scorecard-row" style="border-bottom:none;padding-bottom:4px;margin-top:12px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);flex:1;">Website & Digital</div></div>
+    <div style="height:1px;background:var(--border-light);margin-bottom:4px;"></div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Total Sessions</strong></div>
+      <div class="scorecard-val">9,447</div>
+      <div class="scorecard-target">Prior: ~9,847</div>
+      <div class="scorecard-status"><span class="pill watch">−4.1%</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Website Revenue</strong></div>
+      <div class="scorecard-val">$123.7K</div>
+      <div class="scorecard-target">Prior: ~$145K</div>
+      <div class="scorecard-status"><span class="pill below">−14.7%</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Conversion Rate</strong></div>
+      <div class="scorecard-val">2.0%</div>
+      <div class="scorecard-target">Prior: ~2.3%</div>
+      <div class="scorecard-status"><span class="pill below">−14.2%</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Engagement Rate</strong></div>
+      <div class="scorecard-val">65.0%</div>
+      <div class="scorecard-target">Prior: 63.2%</div>
+      <div class="scorecard-status"><span class="pill above">+2.8%</span></div>
+    </div>
+    <div class="scorecard-row">
+      <div class="scorecard-metric"><strong>Direct Traffic</strong></div>
+      <div class="scorecard-val">2,468</div>
+      <div class="scorecard-target">Prior: ~3,219</div>
+      <div class="scorecard-status"><span class="pill below">−23.3%</span></div>
+    </div>
+    <div class="scorecard-row" style="border-bottom:none;">
+      <div class="scorecard-metric"><strong>Avg Session Duration</strong></div>
+      <div class="scorecard-val">2:57</div>
+      <div class="scorecard-target">Prior: ~2:35</div>
+      <div class="scorecard-status"><span class="pill above">+14.0%</span></div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-wrap -->
+
+<footer class="report-footer">
+  <div>
+    <strong>ROOST Detroit</strong> — Monthly Performance Report · March 2026<br>
+    Data Sources: STR, ROOST Analytics Platform, Google Ads, Website Analytics · Prepared April 8, 2026
+  </div>
+  <div style="text-align:right;">
+    Confidential — Internal Distribution Only<br>
+    President of Hotels · VP Sales &amp; Marketing · General Manager · Director of Revenue
+  </div>
+</footer>
+
+</body>
+</html>
